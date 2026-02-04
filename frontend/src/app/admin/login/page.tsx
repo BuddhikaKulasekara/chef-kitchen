@@ -52,3 +52,4 @@ export default function AdminLogin() {
         </div>
     )
 }
+{/*admin@chefkitchen.com admin123*/ }
