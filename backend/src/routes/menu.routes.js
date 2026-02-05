@@ -1,22 +1,35 @@
-const express = require("express");
-const db = require("../config/db");
-const auth = require("../middleware/auth");
-
-const router = express.Router();
+const express = require("express")
+const router = express.Router()
 
 router.get("/", (req, res) => {
-    db.query("SELECT * FROM menu_items", (err, data) => {
-        res.json(data);
-    });
-});
+    req.db.query("SELECT * FROM menu_items", (err, results) => {
+        if (err) {
+            console.error(err)
+            return res.status(500).json({ error: "Database error" })
+        }
 
-router.post("/", auth, (req, res) => {
-    const { name, description, price, image, category_id } = req.body;
-    db.query(
-        "INSERT INTO menu_items SET ?",
-        { name, description, price, image, category_id },
-        () => res.json({ message: "Menu added" })
-    );
-});
+        res.json(results)   // ✅ returns array
+    })
+})
 
-module.exports = router;
+
+// ✅ POST add menu item
+router.post("/", (req, res) => {
+    const { name, description, price } = req.body
+
+    req.db.query(
+        "INSERT INTO menu_items (name, description, price) VALUES (?,?,?)",
+        [name, description, price],
+        (err) => {
+            if (err) {
+                console.error(err)
+                return res.status(500).json({ error: "Insert failed" })
+            }
+
+            res.json({ success: true })
+        }
+    )
+})
+
+
+module.exports = router
