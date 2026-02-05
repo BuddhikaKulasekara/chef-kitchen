@@ -10,25 +10,30 @@ export default function AdminLogin() {
     const handleLogin = async (e: any) => {
         e.preventDefault()
 
-        const res = await fetch("http://localhost:5000/api/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password }),
-        })
+        try {
+            const res = await fetch("http://localhost:5000/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            })
 
-        const data = await res.json()
+            const data = await res.json()
 
-        if (res.ok) {
+            if (!res.ok) {
+                alert(data.message)
+                return
+            }
+
             localStorage.setItem("adminToken", data.token)
             router.push("/admin/dashboard")
-        } else {
-            alert("Invalid login")
+        } catch {
+            alert("Backend not reachable")
         }
     }
 
     return (
         <div className="min-h-screen flex items-center justify-center">
-            <form onSubmit={handleLogin} className="p-8 bg-white rounded-xl shadow w-96">
+            <form onSubmit={handleLogin} className="p-8 bg-white rounded shadow w-96">
                 <h2 className="text-2xl font-bold mb-4">Admin Login</h2>
 
                 <input
@@ -45,11 +50,10 @@ export default function AdminLogin() {
                     onChange={(e) => setPassword(e.target.value)}
                 />
 
-                <button className="w-full bg-primary text-white py-2 rounded">
+                <button className="w-full bg-black text-white py-2 rounded">
                     Login
                 </button>
             </form>
         </div>
     )
 }
-{/*admin@chefkitchen.com admin123*/ }
