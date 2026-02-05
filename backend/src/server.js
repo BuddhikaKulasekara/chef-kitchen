@@ -1,19 +1,41 @@
-const express = require("express");
-const cors = require("cors");
-require("dotenv").config();
+const express = require("express")
+const cors = require("cors")
+const mysql = require("mysql2")
+require("dotenv").config()
 
-const app = express();
+const app = express()
 
-app.use(cors());
-app.use(express.json());
+app.use(cors({
+    origin: "http://localhost:3000"
+}))
+app.use(express.json())
 
-app.get("/", (req, res) => {
-    res.send("Restaurant Backend Running 🚀");
-});
-app.use("/api/auth", require("./routes/auth.routes"));
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "restaurant_db"
+})
+
+db.connect((err) => {
+    if (err) {
+        console.error("❌ MySQL connection failed:", err.message)
+    } else {
+        console.log("✅ Connected to MySQL")
+    }
+})
+
+app.use((req, res, next) => {
+    req.db = db
+    next()
+})
+
 app.use("/api/menu", require("./routes/menu.routes"))
 
+app.get("/", (req, res) => {
+    res.send("Restaurant Backend Running 🚀")
+})
 
 app.listen(5000, () => {
-    console.log("Server running on http://localhost:5000");
-});
+    console.log("Server running on http://localhost:5000")
+})
