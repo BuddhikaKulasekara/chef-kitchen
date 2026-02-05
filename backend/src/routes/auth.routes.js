@@ -1,22 +1,29 @@
-const express = require("express");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const db = require("../config/db");
-
-const router = express.Router();
+const express = require("express")
+const router = express.Router()
+const jwt = require("jsonwebtoken")
 
 router.post("/login", (req, res) => {
-    const { email, password } = req.body;
+    const { email, password } = req.body
 
-    db.query("SELECT * FROM admins WHERE email=?", [email], async (err, result) => {
-        if (!result.length) return res.status(401).json({ message: "Invalid" });
+    const sql = "SELECT * FROM admins WHERE email = ? AND password = ?"
 
-        const match = await bcrypt.compare(password, result[0].password);
-        if (!match) return res.status(401).json({ message: "Invalid" });
+    req.db.query(sql, [email, password], (err, result) => {
+        if (err) {
+            return res.status(500).json({ message: "Database error" })
+        }
 
-        const token = jwt.sign({ id: result[0].id }, process.env.JWT_SECRET);
-        res.json({ token });
-    });
-});
+        if (result.length === 0) {
+            return res.status(401).json({ message: "Invalid credentials" })
+        }
 
-module.exports = router;
+        const token = jwt.sign(
+            { id: result[0].id, email: result[0].email },
+            "secret123",
+            { expiresIn: "1d" }
+        )
+
+        res.json({ token })
+    })
+})
+
+module.exports = router
