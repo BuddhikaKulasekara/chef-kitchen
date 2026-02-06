@@ -3,7 +3,7 @@ import Link from 'next/link'
 import SocialSignUp from '../SocialSignUp'
 import Logo from '@/app/components/Layout/Header/Logo'
 
-const SignUp = () => {  
+const SignUp = () => {
 
   return (
     <>
@@ -51,7 +51,7 @@ const SignUp = () => {
           <button
             type='submit'
             className='flex w-full items-center text-18 font-medium text-white justify-center rounded-md bg-primary px-5 py-3 text-darkmode transition duration-300 ease-in-out hover:bg-transparent hover:text-primary border-primary border'>
-            Sign Up 
+            Sign Up
           </button>
         </div>
       </form>
