@@ -25,7 +25,7 @@ export default function Dashboard() {
     )
 
     return (
-        <div className="px-8 pb-8 pt-15 bg-blue-50 min-h-screen">
+        <div className="px-8 pb-8 pt-20 bg-blue-50 min-h-screen">
             {/* <div className="px-8 pb-8 pt-25">*/}
             <div className="mb-8 border-b pb-4">
                 <h1 className="text-3xl font-bold">Dashboard</h1>
