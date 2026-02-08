@@ -30,6 +30,18 @@ export default function Dashboard() {
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-3xl font-bold">Dashboard</h1>
 
+
+            </div>
+
+            {/* Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <Card title="Menu Items" path="/admin/menu" />
+                <Card title="Reservations" path="/admin/reservations" />
+                <Card title="Messages" path="/admin/messages" />
+            </div>
+            <div>
+                <hr></hr>
+                <hr></hr>
                 <button
                     onClick={() => {
                         localStorage.removeItem("adminToken")
@@ -39,13 +51,6 @@ export default function Dashboard() {
                 >
                     Logout
                 </button>
-            </div>
-
-            {/* Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card title="Menu Items" path="/admin/menu" />
-                <Card title="Reservations" path="/admin/reservations" />
-                <Card title="Messages" path="/admin/messages" />
             </div>
         </div>
     )
