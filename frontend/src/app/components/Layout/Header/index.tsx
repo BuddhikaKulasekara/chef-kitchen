@@ -82,9 +82,8 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 z-40 py-4 w-full transition-all duration-300 ${
-        sticky ? 'shadow-lg bg-white' : 'shadow-none'
-      }`}>
+      className={`fixed top-0 z-40 py-4 w-full transition-all duration-300 ${sticky ? 'shadow-lg bg-white' : 'shadow-none'
+        }`}>
       <div>
         <div className='container flex items-center justify-between'>
           <div>
@@ -174,9 +173,8 @@ const Header: React.FC = () => {
         )}
         <div
           ref={mobileMenuRef}
-          className={`lg:hidden fixed top-0 right-0 h-full w-full bg-white shadow-lg transform transition-transform duration-300 max-w-xs ${
-            navbarOpen ? 'translate-x-0' : 'translate-x-full'
-          } z-50`}>
+          className={`lg:hidden fixed top-0 right-0 h-full w-full bg-white shadow-lg transform transition-transform duration-300 max-w-xs ${navbarOpen ? 'translate-x-0' : 'translate-x-full'
+            } z-50`}>
           <div className='flex items-center justify-between gap-2 p-4'>
             <div>
               <Logo />

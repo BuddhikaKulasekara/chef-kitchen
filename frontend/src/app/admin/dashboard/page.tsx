@@ -28,7 +28,7 @@ export default function Dashboard() {
         <div className="p-8">
             {/* Header */}
             <div className="flex justify-between items-center mb-6">
-                <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+                <h1 className="text-3xl font-bold">Dashboard</h1>
 
                 <button
                     onClick={() => {
