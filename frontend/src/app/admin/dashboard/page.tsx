@@ -25,23 +25,24 @@ export default function Dashboard() {
     )
 
     return (
-        <div className="p-8">
-            {/* Header */}
-            <div className="flex justify-between items-center mb-6">
+        <div className="px-8 pb-8 pt-15 bg-blue-50 min-h-screen">
+            {/* <div className="px-8 pb-8 pt-25">*/}
+            <div className="mb-8 border-b pb-4">
                 <h1 className="text-3xl font-bold">Dashboard</h1>
-
-
+                <p className="text-gray-500 mt-1">
+                    Welcome back, Admin
+                </p>
             </div>
 
+
             {/* Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-8">
                 <Card title="Menu Items" path="/admin/menu" />
                 <Card title="Reservations" path="/admin/reservations" />
                 <Card title="Messages" path="/admin/messages" />
             </div>
             <div>
-                <hr></hr>
-                <hr></hr>
+
                 <button
                     onClick={() => {
                         localStorage.removeItem("adminToken")
