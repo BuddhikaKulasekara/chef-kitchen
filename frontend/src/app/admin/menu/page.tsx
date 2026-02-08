@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 
 type MenuItem = {
     id: number
@@ -10,6 +11,8 @@ type MenuItem = {
 }
 
 export default function AdminMenuPage() {
+    const router = useRouter()
+
     const [menu, setMenu] = useState<MenuItem[]>([])
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
@@ -42,7 +45,11 @@ export default function AdminMenuPage() {
         await fetch(url, {
             method,
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, description, price })
+            body: JSON.stringify({
+                name,
+                description,
+                price: Number(price)
+            })
         })
 
         resetForm()
@@ -76,9 +83,19 @@ export default function AdminMenuPage() {
 
     return (
         <div className="px-8 pb-8 pt-20">
-            <h1 className="text-3xl font-bold mb-6 text-center">
-                Menu Management
-            </h1>
+            {/* HEADER WITH BACK BUTTON */}
+            <div className="flex items-center mb-6">
+                <button
+                    onClick={() => router.push("/admin/dashboard")}
+                    className="mr-4 text-blue-600 hover:underline"
+                >
+                    ← Back
+                </button>
+
+                <h1 className="text-3xl font-bold flex-1 text-center">
+                    Menu Management
+                </h1>
+            </div>
 
             {/* CREATE / UPDATE FORM */}
             <form
