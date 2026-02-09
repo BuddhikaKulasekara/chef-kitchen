@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 
+
 // ✅ GET all menu items
 router.get("/", (req, res) => {
     req.db.query("SELECT * FROM menu_items", (err, results) => {
