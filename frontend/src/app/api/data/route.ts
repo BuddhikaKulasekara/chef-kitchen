@@ -58,33 +58,29 @@ const ExpertChiefData: ExpertChiefType[] = [
     imgSrc: '/images/Expert/boytwo.png',
   },
 ]
-
 const GalleryImagesData: GalleryImagesType[] = [
   {
     src: '/images/Gallery/foodone.webp',
-    name: 'Caesar Salad (187 Kcal)',
+    name: 'Caesar Salad(187 Kcal)',
     price: 35,
-    id: 0
   },
   {
     src: '/images/Gallery/foodtwo.webp',
-    name: 'Christmas salad (118 Kcal)',
+    name: 'Christmas salad(118 Kcal)',
     price: 17,
-    id: 0
   },
   {
     src: '/images/Gallery/foodthree.webp',
-    name: 'Sauteed mushrooms with pumpkin bowl (238 kcal)',
+    name: 'Sauteed mushrooms with pumpkin bowl(238 kcal)',
     price: 45,
-    id: 0
   },
   {
     src: '/images/Gallery/foodfour.webp',
-    name: 'BBQ Chicken Feast Pizza (272 kcal)',
+    name: 'BBQ Chicken Feast Pizza(272 kcal)',
     price: 27,
-    id: 0
   },
 ]
+
 const FullMenuData: FullMenuType[] = [
   {
     name: 'Grilled Salmon',
