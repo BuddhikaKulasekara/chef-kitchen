@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 
 type MenuItem = {
     id: number
@@ -10,13 +11,16 @@ type MenuItem = {
 }
 
 export default function AdminMenuPage() {
+    const router = useRouter()
+
     const [menu, setMenu] = useState<MenuItem[]>([])
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [price, setPrice] = useState("")
+    const [editingId, setEditingId] = useState<number | null>(null)
     const [loading, setLoading] = useState(true)
 
-    // 🔹 GET MENU
+    // READ
     const fetchMenu = async () => {
         const res = await fetch("http://localhost:5000/api/menu")
         const data = await res.json()
@@ -28,41 +32,79 @@ export default function AdminMenuPage() {
         fetchMenu()
     }, [])
 
-    // 🔹 ADD MENU
-    const addMenuItem = async (e: React.FormEvent) => {
+    // CREATE + UPDATE
+    const submitMenuItem = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        await fetch("http://localhost:5000/api/menu", {
-            method: "POST",
+        const url = editingId
+            ? `http://localhost:5000/api/menu/${editingId}`
+            : "http://localhost:5000/api/menu"
+
+        const method = editingId ? "PUT" : "POST"
+
+        await fetch(url, {
+            method,
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 name,
                 description,
-                price
+                price: Number(price)
             })
         })
 
-        setName("")
-        setDescription("")
-        setPrice("")
+        resetForm()
         fetchMenu()
     }
 
-    // 🔹 DELETE MENU
+    // DELETE
     const deleteMenuItem = async (id: number) => {
+        if (!confirm("Delete this menu item?")) return
+
         await fetch(`http://localhost:5000/api/menu/${id}`, {
             method: "DELETE"
         })
         fetchMenu()
     }
 
-    return (
-        <div className="p-8">
-            <h1 className="text-3xl font-bold mb-6">Menu Management</h1>
+    // EDIT MODE
+    const startEdit = (item: MenuItem) => {
+        setEditingId(item.id)
+        setName(item.name)
+        setDescription(item.description)
+        setPrice(String(item.price))
+    }
 
-            {/* ADD FORM */}
-            <form onSubmit={addMenuItem} className="bg-white p-6 rounded shadow mb-8">
-                <h2 className="text-xl font-semibold mb-4">Add Menu Item</h2>
+    const resetForm = () => {
+        setEditingId(null)
+        setName("")
+        setDescription("")
+        setPrice("")
+    }
+
+    return (
+        <div className="px-8 pb-8 pt-20">
+            {/* HEADER WITH BACK BUTTON */}
+            <div className="flex items-center mb-6">
+                <button
+                    onClick={() => router.push("/admin/dashboard")}
+                    className="mr-4 text-blue-600 hover:underline"
+                >
+                    ← Back
+                </button>
+
+                <h1 className="text-3xl font-bold flex-1 text-center">
+                    Menu Management
+                </h1>
+            </div>
+
+            {/* CREATE / UPDATE FORM */}
+            <form
+                onSubmit={submitMenuItem}
+                className="bg-white p-6 rounded shadow mb-8"
+            >
+                <h2 className="text-xl font-semibold mb-4">
+                    {editingId ? "Edit Menu Item" : "Add Menu Item"}
+                </h2>
 
                 <input
                     type="text"
@@ -86,16 +128,28 @@ export default function AdminMenuPage() {
                     placeholder="Price"
                     value={price}
                     onChange={e => setPrice(e.target.value)}
-                    className="w-full border p-2 mb-3"
+                    className="w-full border p-2 mb-4"
                     required
                 />
 
-                <button className="bg-green-600 text-white px-4 py-2 rounded">
-                    Add Menu Item
-                </button>
+                <div className="flex gap-3">
+                    <button className="bg-green-600 text-white px-4 py-2 rounded">
+                        {editingId ? "Update" : "Add"}
+                    </button>
+
+                    {editingId && (
+                        <button
+                            type="button"
+                            onClick={resetForm}
+                            className="bg-gray-400 text-white px-4 py-2 rounded"
+                        >
+                            Cancel
+                        </button>
+                    )}
+                </div>
             </form>
 
-            {/* MENU TABLE */}
+            {/* READ TABLE */}
             {loading ? (
                 <p>Loading...</p>
             ) : (
@@ -105,7 +159,7 @@ export default function AdminMenuPage() {
                             <th className="p-3 border">Name</th>
                             <th className="p-3 border">Description</th>
                             <th className="p-3 border">Price</th>
-                            <th className="p-3 border">Action</th>
+                            <th className="p-3 border">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -114,7 +168,13 @@ export default function AdminMenuPage() {
                                 <td className="p-3 border">{item.name}</td>
                                 <td className="p-3 border">{item.description}</td>
                                 <td className="p-3 border">${item.price}</td>
-                                <td className="p-3 border">
+                                <td className="p-3 border flex gap-2">
+                                    <button
+                                        onClick={() => startEdit(item)}
+                                        className="bg-blue-500 text-white px-3 py-1 rounded"
+                                    >
+                                        Edit
+                                    </button>
                                     <button
                                         onClick={() => deleteMenuItem(item.id)}
                                         className="bg-red-500 text-white px-3 py-1 rounded"

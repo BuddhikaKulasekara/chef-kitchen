@@ -15,7 +15,7 @@ const Newsletter = () => {
               <h2 className='text-white mb-8'>
                 Subscribe our <br /> newsletter.
               </h2>
-
+              {/*
               <div>
                 <div className='relative text-white focus-within:text-white flex flex-row-reverse shadow-fi rounded-full'>
                   <input
@@ -38,7 +38,7 @@ const Newsletter = () => {
                     </button>
                   </div>
                 </div>
-              </div>
+              </div>*/}
             </div>
           </div>
           <div className='md:col-span-5 relative hidden md:block'>

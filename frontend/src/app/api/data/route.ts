@@ -8,10 +8,11 @@ import { FooterLinkType } from '@/app/types/footerlink'
 import { FullMenuType } from '@/app/types/fullmenu'
 
 const HeaderData: HeaderItem[] = [
+  { label: 'Home', href: '/' },
   { label: 'About Us', href: '/#aboutus' },
   { label: 'Menu', href: '/#menu' },
   { label: 'Reserve Table', href: '/#reserve' },
-  { label: 'Docs', href: '/documentation' },
+
 ]
 
 const FeaturesData: FeaturesType[] = [
@@ -58,7 +59,6 @@ const ExpertChiefData: ExpertChiefType[] = [
     imgSrc: '/images/Expert/boytwo.png',
   },
 ]
-
 const GalleryImagesData: GalleryImagesType[] = [
   {
     src: '/images/Gallery/foodone.webp',

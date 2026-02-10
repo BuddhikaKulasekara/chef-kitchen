@@ -1,29 +1,47 @@
 const express = require("express")
+const bcrypt = require("bcryptjs")
 const router = express.Router()
-const jwt = require("jsonwebtoken")
 
 router.post("/login", (req, res) => {
     const { email, password } = req.body
 
-    const sql = "SELECT * FROM admins WHERE email = ? AND password = ?"
+    if (!email || !password) {
+        return res.status(400).json({ message: "Missing fields" })
+    }
 
-    req.db.query(sql, [email, password], (err, result) => {
-        if (err) {
-            return res.status(500).json({ message: "Database error" })
+    // 🔍 Check admin by email
+    req.db.query(
+        "SELECT * FROM admins WHERE email = ?",
+        [email],
+        async (err, results) => {
+            if (err) {
+                console.error(err)
+                return res.status(500).json({ message: "Database error" })
+            }
+
+            if (results.length === 0) {
+                return res.status(401).json({ message: "Invalid credentials" })
+            }
+
+            const admin = results[0]
+
+            // 🔐 Compare password
+            const isMatch = await bcrypt.compare(password, admin.password)
+
+            if (!isMatch) {
+                return res.status(401).json({ message: "Invalid credentials" })
+            }
+
+            // ✅ Login success
+            res.json({
+                token: "admin-token-123",
+                admin: {
+                    id: admin.id,
+                    email: admin.email
+                }
+            })
         }
-
-        if (result.length === 0) {
-            return res.status(401).json({ message: "Invalid credentials" })
-        }
-
-        const token = jwt.sign(
-            { id: result[0].id, email: result[0].email },
-            "secret123",
-            { expiresIn: "1d" }
-        )
-
-        res.json({ token })
-    })
+    )
 })
 
 module.exports = router
