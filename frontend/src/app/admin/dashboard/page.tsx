@@ -37,8 +37,8 @@ export default function Dashboard() {
             {/* Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <Card title="Menu Items" path="/admin/menu" />
-                <Card title="Reservations" path="/admin/reservations" />
-                <Card title="Messages" path="/admin/messages" />
+                {/*<Card title="Reservations" path="/admin/reservations" />
+                <Card title="Messages" path="/admin/messages" />*/}
             </div>
 
             {/* Logout */}
