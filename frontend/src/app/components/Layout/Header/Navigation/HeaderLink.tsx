@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { HeaderItem } from '../../../../types/menu'
 import { usePathname } from 'next/navigation'
 
-const ALLOWED_MENU = ['About Us', 'Menu', 'Reserve Table']
+const ALLOWED_MENU = ['Home', 'About Us', 'Menu']
 
 const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
   const [submenuOpen, setSubmenuOpen] = useState(false)
@@ -32,8 +32,8 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
       <Link
         href={item.href}
         className={`text-lg flex font-medium duration-300 ${path === item.href
-            ? 'text-primary'
-            : 'text-black/50 hover:text-primary'
+          ? 'text-primary'
+          : 'text-black/50 hover:text-primary'
           }`}
       >
         {item.label}
@@ -64,8 +64,8 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
               key={index}
               href={subItem.href}
               className={`block px-4 py-2 ${path === subItem.href
-                  ? 'bg-primary text-white'
-                  : 'text-black hover:bg-primary hover:text-white'
+                ? 'bg-primary text-white'
+                : 'text-black hover:bg-primary hover:text-white'
                 }`}
             >
               {subItem.label}
