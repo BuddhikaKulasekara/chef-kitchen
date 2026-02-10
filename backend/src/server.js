@@ -4,6 +4,9 @@ const mysql = require("mysql2")
 require("dotenv").config()
 
 const app = express()
+import reservationsRoutes from './routes/reservations.js'
+
+app.use('/api/reservations', reservationsRoutes)
 
 app.use(cors({
     origin: "http://localhost:3000"
@@ -41,3 +44,4 @@ app.get("/", (req, res) => {
 app.listen(5000, () => {
     console.log("Server running on http://localhost:5000")
 })
+
