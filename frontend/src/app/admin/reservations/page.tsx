@@ -12,48 +12,50 @@ type Reservation = {
     status: string
 }
 
-export default function ReservationsPage() {
+export default function AdminReservations() {
     const [data, setData] = useState<Reservation[]>([])
 
-    const fetchReservations = async () => {
+    const loadReservations = async () => {
         const res = await fetch('http://localhost:5000/api/reservations')
         const json = await res.json()
         setData(json)
     }
 
     useEffect(() => {
-        fetchReservations()
+        loadReservations()
     }, [])
 
-    const approveReservation = async (id: number) => {
+    const approve = async (id: number) => {
         await fetch(
             `http://localhost:5000/api/reservations/${id}/approve`,
             { method: 'PUT' }
         )
-        fetchReservations()
+        loadReservations()
     }
 
-    const deleteReservation = async (id: number) => {
+    const remove = async (id: number) => {
         await fetch(
             `http://localhost:5000/api/reservations/${id}`,
             { method: 'DELETE' }
         )
-        fetchReservations()
+        loadReservations()
     }
 
     return (
         <div className='p-8'>
-            <h1 className='text-2xl font-semibold mb-6'>Reservations</h1>
+            <h2 className='text-2xl font-bold mb-6'>
+                Reservations
+            </h2>
 
             <table className='w-full border'>
                 <thead className='bg-gray-100'>
                     <tr>
-                        <th className='p-2'>Name</th>
+                        <th>Name</th>
                         <th>Email</th>
-                        <th>Date</th>
+                        <th>Date / Time</th>
                         <th>Guests</th>
                         <th>Status</th>
-                        <th>Actions</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
 
@@ -66,27 +68,25 @@ export default function ReservationsPage() {
                             <td>{r.guests}</td>
                             <td>
                                 <span
-                                    className={`px-3 py-1 rounded-full text-sm ${r.status === 'approved'
+                                    className={`px-3 py-1 rounded-full text-sm
+                  ${r.status === 'approved'
                                             ? 'bg-green-200'
                                             : 'bg-yellow-200'
-                                        }`}
-                                >
+                                        }`}>
                                     {r.status}
                                 </span>
                             </td>
                             <td className='space-x-2'>
                                 {r.status === 'pending' && (
                                     <button
-                                        onClick={() => approveReservation(r.id)}
-                                        className='px-3 py-1 bg-green-500 text-white rounded'
-                                    >
+                                        onClick={() => approve(r.id)}
+                                        className='bg-green-500 text-white px-3 py-1 rounded'>
                                         Approve
                                     </button>
                                 )}
                                 <button
-                                    onClick={() => deleteReservation(r.id)}
-                                    className='px-3 py-1 bg-red-500 text-white rounded'
-                                >
+                                    onClick={() => remove(r.id)}
+                                    className='bg-red-500 text-white px-3 py-1 rounded'>
                                     Delete
                                 </button>
                             </td>
