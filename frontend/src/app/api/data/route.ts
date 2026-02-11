@@ -18,27 +18,27 @@ const HeaderData: HeaderItem[] = [
 const FeaturesData: FeaturesType[] = [
   {
     imgSrc: '/images/Features/featureOne.svg',
-    heading: 'Elegant Dining Atmosphere',
+    heading: 'Cozy & Inviting Atmosphere',
     subheading:
-      'Enjoy a warm, refined space perfect for intimate dinners or small group gatherings.',
+      'Relax in a warm, welcoming space designed for casual dinners, family gatherings, or special celebrations — a perfect place to enjoy every bite.',
   },
   {
     imgSrc: '/images/Features/featureThree.svg',
-    heading: 'Signature Chef Creations',
+    heading: 'Unique Culinary Creations',
     subheading:
-      'Taste one-of-a-kind dishes crafted with passion by our top culinary team.',
+      'Savor exclusive dishes crafted with love and creativity by our talented chefs, bringing flavors that delight your senses.',
   },
   {
     imgSrc: '/images/Features/featureTwo.svg',
-    heading: 'Fresh, Local Ingredients',
+    heading: 'Fresh Ingredients, Full Flavor',
     subheading:
-      'We use locally sourced goods daily for unmatched taste and quality.',
+      'We use the freshest local ingredients daily, ensuring every dish bursts with authentic taste and premium quality.',
   },
   {
     imgSrc: '/images/Features/featureFour.svg',
-    heading: 'Hassle-Free Reservations',
+    heading: 'Community & Events',
     subheading:
-      'Reserve online in seconds or walk in anytime — we’re ready when you are.',
+      'At Hunger Land, every visit can be a celebration with friends, family, and fellow food lovers.',
   }
 ]
 
