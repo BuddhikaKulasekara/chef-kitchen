@@ -9,12 +9,12 @@ const Hero = () => {
         <div className='grid grid-cols-1 lg:grid-cols-12 items-center'>
           <div className='lg:col-span-6'>
             <h1 className='font-semibold mb-5 text-black lg:text-start text-center sm:leading-20 leading-16'>
-              Elevated Dining at Chef’s Kitchen
+              Where Hunger, Meets Happiness
             </h1>
             <p className='text-black/55 text-lg font-normal mb-10 lg:text-start text-center'>
-              Indulge in an elegant culinary journey, crafted with locally
-              sourced ingredients and world-class flavors — served fresh, every
-              day.
+              Indulge in an exquisite culinary journey at Hunger Land. Every dish is carefully crafted with fresh,
+              locally sourced ingredients and inspired by world-class flavors — delivered to your plate with love,
+              every single day
             </p>
             <div className='flex flex-col sm:flex-row gap-5 items-center justify-center lg:justify-start'>
               <Link href='/#menu'>
@@ -22,11 +22,11 @@ const Hero = () => {
                   View Menu
                 </button>
               </Link>
-              <Link href='/#reserve'>
+              {/*<Link href='/#reserve'>
                 <button className='text-xl border border-primary rounded-full font-medium py-3 px-8 text-primary hover:text-white hover:bg-primary hover:cursor-pointer transition ease-in-out duration-300'>
                   Reserve a Table
                 </button>
-              </Link>
+              </Link>*/}
             </div>
           </div>
           <div className='lg:col-span-6 flex justify-center relative'>
