@@ -25,25 +25,24 @@ const Cook = () => {
           </div>
           <div className='lg:col-span-6 flex flex-col justify-center items-center lg:items-start'>
             <p className='text-primary text-lg font-normal mb-3 tracking-widest uppercase lg:text-start text-center'>
-              About Us
+              About Hunger Land
             </p>
             <h2 className='lg:text-start text-center'>
-              Crafted with Passion, Served with Pride
+              Dining experience that excites the senses
             </h2>
             <p className='text-black/50 text-lg font-normal my-5 text-start'>
-              At Chef’s Kitchen, every dish tells a story. Our chefs blend
-              tradition with innovation to deliver a fine dining experience that
-              delights the senses. From handpicked ingredients to exquisite
-              plating, we’re here to make every meal unforgettable.
+              At Hunger Land, every dish tells a story. Our chefs combine culinary tradition
+              with modern innovation to create a dining experience that excites the senses.
+              Using only the freshest, locally sourced ingredients and presenting each plate
+              with care, we ensure every meal is a moment to remember.
             </p>
             <p className='text-black/50 text-lg font-normal mb-10 text-start'>
-              Whether you’re celebrating a special occasion or enjoying a casual
-              evening out, our welcoming ambiance and flavorful creations
-              promise something truly special for every guest.
+              Whether you’re celebrating a special occasion or simply enjoying a casual evening,
+              Hunger Land offers a welcoming ambiance, flavorful creations, and something truly special for every guest.
             </p>
-            <button className='text-xl font-medium rounded-full text-white py-3 px-8 duration-300 bg-primary w-fit border border-primary hover:bg-transparent hover:text-primary hover:cursor-pointer'>
+            {/*<button className='text-xl font-medium rounded-full text-white py-3 px-8 duration-300 bg-primary w-fit border border-primary hover:bg-transparent hover:text-primary hover:cursor-pointer'>
               Learn more
-            </button>
+            </button>*/}
           </div>
         </div>
       </div>
