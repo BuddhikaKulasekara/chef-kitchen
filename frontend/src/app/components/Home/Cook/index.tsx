@@ -25,7 +25,7 @@ const Cook = () => {
           </div>
           <div className='lg:col-span-6 flex flex-col justify-center items-center lg:items-start'>
             <p className='text-primary text-lg font-normal mb-3 tracking-widest uppercase lg:text-start text-center'>
-              About Hunger Land
+              About Hunger Land!
             </p>
             <h2 className='lg:text-start text-center'>
               Dining experience that excites the senses,
