@@ -96,10 +96,10 @@ const Footer: FC = () => {
                   className='text-primary text-3xl lg:text-2xl inline-block me-2'
                 />
                 <p className='text-black text-base'>
-                  925 Filbert Street Pennsylvania 18072
+                  69/1, Ds Senanayake Road, Kandy, Sri Lanka
                 </p>
               </div>
-              <Link href='tel:+1(909) 235-9814'>
+              <Link href='tel:+94761627842'> {/*contact number link*/}
                 <div className='flex'>
                   <Icon
                     icon='solar:phone-bold'
