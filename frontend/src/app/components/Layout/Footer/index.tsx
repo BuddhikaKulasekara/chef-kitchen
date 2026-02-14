@@ -136,7 +136,7 @@ const Footer: FC = () => {
 
           <div className=''>
             <Link
-              href='#'
+              href='/privacy-policy'
               className='text-sm text-black/70 px-5 border-r border-grey/15 hover:text-primary hover:underline'>
               Privacy policy
             </Link>
