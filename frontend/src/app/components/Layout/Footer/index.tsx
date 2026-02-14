@@ -106,7 +106,7 @@ const Footer: FC = () => {
                     className='text-primary text-3xl lg:text-2xl inline-block me-2'
                   />
                   <p className='text-black/60 hover:text-black text-base'>
-                    +1(909) 235-9814
+                    +94 76 162 7842
                   </p>
                 </div>
               </Link>
