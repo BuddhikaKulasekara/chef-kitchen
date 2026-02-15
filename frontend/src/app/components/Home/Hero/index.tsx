@@ -9,7 +9,7 @@ const Hero = () => {
         <div className='grid grid-cols-1 lg:grid-cols-12 items-center'>
           <div className='lg:col-span-6'>
             <h1 className='font-semibold mb-5 text-black lg:text-start text-center sm:leading-20 leading-16'>
-              Where Hunger, Meets Happiness
+              Where Hunger, Meets Happiness.
             </h1>
             <p className='text-black/55 text-lg font-normal mb-10 lg:text-start text-center'>
               Indulge in an exquisite culinary journey at Hunger Land. Every dish is carefully crafted with fresh,
