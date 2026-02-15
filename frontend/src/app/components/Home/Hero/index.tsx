@@ -13,7 +13,7 @@ const Hero = () => {
             </h1>
             <p className='text-black/55 text-lg font-normal mb-10 lg:text-start text-center'>
               Indulge in an exquisite culinary journey at Hunger Land. Every dish is carefully crafted with fresh,
-              locally sourced ingredients and inspired by world-class flavors — delivered to your plate with love,
+              locally sourced ingredients and inspired by world-class flavors, delivered to your plate with love,
               every single day
             </p>
             <div className='flex flex-col sm:flex-row gap-5 items-center justify-center lg:justify-start'>
