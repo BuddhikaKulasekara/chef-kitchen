@@ -38,7 +38,7 @@ const Hero = () => {
                 height={68}
               />
               <p className='text-lg font-normal'>
-                Over 50+ <br /> signature dishes
+                Over 30+ <br /> signature dishes
               </p>
             </div>
             <Image
