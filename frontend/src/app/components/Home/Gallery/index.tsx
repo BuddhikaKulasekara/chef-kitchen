@@ -60,7 +60,7 @@ const Gallery = () => {
       <div className='container'>
         <div className='text-center'>
           <p className='text-primary text-lg font-normal mb-3 tracking-widest uppercase'>
-            Our Menu
+            Our Menu.
           </p>
           <h2>Explore Our Signature Dishes</h2>
         </div>
