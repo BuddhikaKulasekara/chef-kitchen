@@ -146,7 +146,7 @@ const Gallery = () => {
 
                 <div className='max-h-[350px] overflow-y-auto'>
                   {menuLoading ? (
-                    <p className='py-10'>Loading menu...</p>
+                    <p className='py-10'>Loading menu....</p>
                   ) : (
                     <table className='w-full table-auto border-collapse text-left'>
                       <thead className='sticky top-0 bg-neutral-100'>
