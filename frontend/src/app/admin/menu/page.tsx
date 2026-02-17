@@ -89,7 +89,7 @@ export default function AdminMenuPage() {
                     onClick={() => router.push("/admin/dashboard")}
                     className="mr-4 text-blue-600 hover:underline"
                 >
-                    ← Back
+                    ← Back {/* BACK BUTTON */}
                 </button>
 
                 <h1 className="text-3xl font-bold flex-1 text-center">
