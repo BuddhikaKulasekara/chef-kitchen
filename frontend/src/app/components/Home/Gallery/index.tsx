@@ -60,7 +60,7 @@ const Gallery = () => {
       <div className='container'>
         <div className='text-center'>
           <p className='text-primary text-lg font-normal mb-3 tracking-widest uppercase'>
-            Our Menu
+            Our Menu.
           </p>
           <h2>Explore Our Signature Dishes</h2>
         </div>
@@ -146,7 +146,7 @@ const Gallery = () => {
 
                 <div className='max-h-[350px] overflow-y-auto'>
                   {menuLoading ? (
-                    <p className='py-10'>Loading menu...</p>
+                    <p className='py-10'>Loading menu....</p>
                   ) : (
                     <table className='w-full table-auto border-collapse text-left'>
                       <thead className='sticky top-0 bg-neutral-100'>

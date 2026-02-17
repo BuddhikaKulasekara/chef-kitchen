@@ -96,17 +96,17 @@ const Footer: FC = () => {
                   className='text-primary text-3xl lg:text-2xl inline-block me-2'
                 />
                 <p className='text-black text-base'>
-                  925 Filbert Street Pennsylvania 18072
+                  69/1, Ds Senanayake Road, Kandy, Sri Lanka
                 </p>
               </div>
-              <Link href='tel:+1(909) 235-9814'>
+              <Link href='tel:+94761627842'> {/*contact number link*/}
                 <div className='flex'>
                   <Icon
                     icon='solar:phone-bold'
                     className='text-primary text-3xl lg:text-2xl inline-block me-2'
                   />
                   <p className='text-black/60 hover:text-black text-base'>
-                    +1(909) 235-9814
+                    +94 76 162 7842
                   </p>
                 </div>
               </Link>
@@ -126,22 +126,22 @@ const Footer: FC = () => {
         </div>
         <div className='border-t border-grey/15 py-5 flex flex-col sm:flex-row justify-between sm:items-center gap-5'>
           <p className='text-sm text-black/70'>
-            @2025 - Chef's kitchen. All Rights Reserved by{' '}
+            @2026 - Buddhika Kulasekara. All Rights Reserved by{' '}
             <Link
-              href='https://getnextjstemplates.com/'
+              href='/'
               className='hover:text-primary hover:underline'>
-              GetNextjsTemplates
+
             </Link>
           </p>
 
           <div className=''>
             <Link
-              href='#'
+              href='/privacy-policy'
               className='text-sm text-black/70 px-5 border-r border-grey/15 hover:text-primary hover:underline'>
               Privacy policy
             </Link>
             <Link
-              href='#'
+              href='/terms-conditions'
               className='text-sm text-black/70 px-5 hover:text-primary hover:underline'>
               Terms & conditions
             </Link>

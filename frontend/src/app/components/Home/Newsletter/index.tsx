@@ -10,10 +10,11 @@ const Newsletter = () => {
           <div className='md:col-span-7'>
             <div className='m-5 sm:m-10 lg:ml-32 lg:mt-20 lg:mb-20'>
               <p className='text-lg font-normal text-white mb-3 tracking-widest'>
-                NEWSLETTER{' '}
+                Chef’s Specials – A Taste of Creativity{' '}
               </p>
               <h2 className='text-white mb-8'>
-                Subscribe our <br /> newsletter.
+                Every week, our chefs craft unique dishes that bring new flavors to your table.<br />
+
               </h2>
               {/*
               <div>

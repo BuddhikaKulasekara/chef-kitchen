@@ -40,28 +40,28 @@ const Features = () => {
         <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-y-28 gap-x-6 mt-24'>
           {loading
             ? Array.from({ length: 4 }).map((_, i) => (
-                <FeaturesSkeleton key={i} />
-              ))
+              <FeaturesSkeleton key={i} />
+            ))
             : features.map((items, i) => (
-                <div
-                  key={i}
-                  className='p-8 relative rounded-3xl bg-linear-to-b from-primary/10 to-white shadow-md hover:scale-105 transition duration-300 ease-in-out hover:cursor-pointer'>
-                  <div className='rounded-full flex justify-center absolute -top-[50%] sm:top-[-40%] md:top-[-55%] lg:top-[-35%] left-[0%]'>
-                    <Image
-                      src={items.imgSrc}
-                      alt={items.imgSrc}
-                      width={510}
-                      height={10}
-                    />
-                  </div>
-                  <p className='text-2xl text-black font-semibold text-center mt-16'>
-                    {items.heading}
-                  </p>
-                  <p className='text-base font-normal text-black/50 text-center mt-2 leading-6'>
-                    {items.subheading}
-                  </p>
+              <div
+                key={i}
+                className='p-8 relative rounded-3xl bg-linear-to-b from-primary/10 to-white shadow-md hover:scale-105 transition duration-300 ease-in-out hover:cursor-pointer'>
+                <div className='rounded-full flex justify-center absolute -top-[50%] sm:top-[-40%] md:top-[-55%] lg:top-[-35%] left-[0%]'>
+                  <Image
+                    src={items.imgSrc}
+                    alt={items.imgSrc}
+                    width={510}
+                    height={10}
+                  />
                 </div>
-              ))}
+                <p className='text-2xl text-black font-semibold text-center mt-16'>
+                  {items.heading}
+                </p>
+                <p className='text-base font-normal text-black/50 text-center mt-2 leading-6'>
+                  {items.subheading}
+                </p>
+              </div>
+            ))}
         </div>
       </div>
     </section>
