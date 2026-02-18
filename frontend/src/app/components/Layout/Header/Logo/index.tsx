@@ -5,14 +5,14 @@ const Logo: React.FC = () => {
   return (
     <Link href='/' className='flex items-center gap-4'>
       <Image
-        src='/images/Logo/Buddhika (14).png'
+        src='/images/Logo/Logo.webp'
         alt='logo'
         width={117}
         height={34}
         className='w-fit'
         quality={100}
       />
-      <p className='text-black text-2xl font-semibold '>.</p>
+      <p className='text-black text-2xl font-semibold '></p>
     </Link>
   )
 }
