@@ -28,7 +28,7 @@ const Cook = () => {
               About Hunger Land!
             </p>
             <h2 className='lg:text-start text-center'>
-              Dining experience that excites the senses,
+              Dining experience that excites the senses
             </h2>
             <p className='text-black/50 text-lg font-normal my-5 text-start'>
               At Hunger Land, every dish tells a story. Our chefs combine culinary tradition
