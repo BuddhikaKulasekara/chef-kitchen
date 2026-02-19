@@ -22,7 +22,7 @@ const Cook = () => {
               width={636}
               height={808}
             />
-          </div>
+          </div>{/*about section */}
           <div className='lg:col-span-6 flex flex-col justify-center items-center lg:items-start'>
             <p className='text-primary text-lg font-normal mb-3 tracking-widest uppercase lg:text-start text-center'>
               About Hunger Land!
