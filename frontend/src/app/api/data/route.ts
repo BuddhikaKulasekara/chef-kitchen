@@ -35,7 +35,7 @@ const FeaturesData: FeaturesType[] = [
       'We use the freshest local ingredients daily, ensuring every dish bursts with authentic taste and premium quality.',
   },
   {
-    imgSrc: '/images/Features/featureFour.svg',
+    imgSrc: '/images/Features/Buddhika (25).png',
     heading: 'Community & Events',
     subheading:
       'At Hunger Land, every visit can be a celebration with friends, family, and fellow food lovers.',
