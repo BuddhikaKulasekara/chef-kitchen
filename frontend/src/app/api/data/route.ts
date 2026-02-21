@@ -17,25 +17,25 @@ const HeaderData: HeaderItem[] = [
 
 const FeaturesData: FeaturesType[] = [
   {
-    imgSrc: '/images/Features/featureOne.svg',
+    imgSrc: '/images/Features/Buddhika (23).png',
     heading: 'Cozy & Inviting Atmosphere',
     subheading:
       'Relax in a warm, welcoming space designed for casual dinners, family gatherings, or special celebrations — a perfect place to enjoy every bite.',
   },
   {
-    imgSrc: '/images/Features/featureThree.svg',
+    imgSrc: '/images/Features/Buddhika (26).png',
     heading: 'Unique Culinary Creations',
     subheading:
       'Savor exclusive dishes crafted with love and creativity by our talented chefs, bringing flavors that delight your senses.',
   },
   {
-    imgSrc: '/images/Features/featureTwo.svg',
+    imgSrc: '/images/Features/Buddhika (27).png',
     heading: 'Fresh Ingredients, Full Flavor',
     subheading:
       'We use the freshest local ingredients daily, ensuring every dish bursts with authentic taste and premium quality.',
   },
   {
-    imgSrc: '/images/Features/Buddhika (25).png',
+    imgSrc: '/images/Features/Buddhika (28).png',
     heading: 'Community & Events',
     subheading:
       'At Hunger Land, every visit can be a celebration with friends, family, and fellow food lovers.',
