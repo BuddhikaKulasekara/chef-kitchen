@@ -17,7 +17,7 @@ const HeaderData: HeaderItem[] = [
 
 const FeaturesData: FeaturesType[] = [
   {
-    imgSrc: '/images/Features/Buddhika (23).png',
+    imgSrc: '/images/Features/Buddhika (23).png',// Updated image source
     heading: 'Cozy & Inviting Atmosphere',
     subheading:
       'Relax in a warm, welcoming space designed for casual dinners, family gatherings, or special celebrations — a perfect place to enjoy every bite.',
