@@ -15,7 +15,7 @@ const HeaderData: HeaderItem[] = [
 
 ]
 
-const FeaturesData: FeaturesType[] = [
+const FeaturesData: FeaturesType[] = [ // nedd to change the image png to webp and update the image source in the public folder
   {
     imgSrc: '/images/Features/Buddhika (23).png',// Updated image source
     heading: 'Cozy & Inviting Atmosphere',
