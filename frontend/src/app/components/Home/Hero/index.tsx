@@ -36,7 +36,7 @@ const Hero = () => {
                 alt='pizza-image'
                 width={68}
                 height={68}
-              />
+              /> {/**header */}
               <p className='text-lg font-normal'>
                 Over 30+ <br /> signature dishes
               </p>
