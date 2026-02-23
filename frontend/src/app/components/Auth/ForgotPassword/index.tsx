@@ -108,7 +108,7 @@ const ForgotPassword = () => {
                       transform='rotate(-90 1.39737 38.6026)'
                       fill='#3056D3'
                     />
-                    <circle
+                    <circle //cell
                       cx='1.39737'
                       cy='1.99122'
                       r='1.39737'
