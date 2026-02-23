@@ -44,7 +44,7 @@ const ForgotPassword = () => {
       setLoader(false)
     }
   }
-
+  //forgot password 
   return (
     <section className='bg-[#F4F7FF] py-14 dark:bg-dark lg:py-20'>
       <div className='container'>
