@@ -41,7 +41,7 @@ const Hero = () => {
                 Over 30+ <br /> signature dishes
               </p>
             </div>
-            <Image
+            <Image {/*Banner size added */}
               src='/images/hero/banner-image.webp'
               alt='nothing'
               width={1000}
