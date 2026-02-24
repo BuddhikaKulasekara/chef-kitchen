@@ -40,8 +40,8 @@ const Hero = () => {
               <p className='text-lg font-normal'>
                 Over 30+ <br /> signature dishes
               </p>
-            </div>
-            <Image {/*Banner size added */}
+            </div>{/*Banner size added */}
+            <Image
               src='/images/hero/banner-image.webp'
               alt='nothing'
               width={1000}
