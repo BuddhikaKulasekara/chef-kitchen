@@ -11,7 +11,7 @@ const Newsletter = () => {
             <div className='m-5 sm:m-10 lg:ml-32 lg:mt-20 lg:mb-20'>
               <p className='text-lg font-normal text-white mb-3 tracking-widest'>
                 Chef’s Specials – A Taste of Creativity{' '}
-              </p>
+              </p>{/*content */}
               <h2 className='text-white mb-8'>
                 Every week, our chefs craft unique dishes that bring new flavors to your table.<br />
 
