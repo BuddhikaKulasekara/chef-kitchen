@@ -34,7 +34,7 @@ const Cook = () => {
               At Hunger Land, every dish tells a story. Our chefs combine culinary tradition
               with modern innovation to create a dining experience that excites the senses.
               Using only the freshest, locally sourced ingredients and presenting each plate
-              with care, we ensure every meal is a moment to remember.
+              with care, we ensure every meal is a moment to remember..
             </p>
             <p className='text-black/50 text-lg font-normal mb-10 text-start'>
               Whether you’re celebrating a special occasion or simply enjoying a casual evening,
