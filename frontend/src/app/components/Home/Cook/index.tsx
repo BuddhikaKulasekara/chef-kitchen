@@ -38,7 +38,7 @@ const Cook = () => {
             </p>
             <p className='text-black/50 text-lg font-normal mb-10 text-start'>
               Whether you’re celebrating a special occasion or simply enjoying a casual evening,
-              Hunger Land offers a welcoming ambiance, flavorful creations, and something truly special for every guest
+              Hunger Land offers a welcoming ambiance, flavorful creations, and something truly special for every guest.
             </p>
             {/*<button className='text-xl font-medium rounded-full text-white py-3 px-8 duration-300 bg-primary w-fit border border-primary hover:bg-transparent hover:text-primary hover:cursor-pointer'>
               Learn more
