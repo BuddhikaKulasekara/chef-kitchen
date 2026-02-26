@@ -29,7 +29,7 @@ const FeaturesData: FeaturesType[] = [ // nedd to change the image png to webp a
       'Savor exclusive dishes crafted with love and creativity by our talented chefs, bringing flavors that delight your senses.',
   },
   {
-    imgSrc: '/images/Features/Buddhika (27).png',// Updated image source
+    imgSrc: '/images/Features/fresh.webp',// Updated image source
     heading: 'Fresh Ingredients, Full Flavor',
     subheading:
       'We use the freshest local ingredients daily, ensuring every dish bursts with authentic taste and premium quality.',
