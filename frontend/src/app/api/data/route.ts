@@ -14,7 +14,7 @@ const HeaderData: HeaderItem[] = [
   { label: 'Reserve Table', href: '/#reserve' },
 
 ]
-
+//feat: png to webp change
 const FeaturesData: FeaturesType[] = [ // nedd to change the image png to webp and update the image source in the public folder
   {
     imgSrc: '/images/Features/cozy.webp',// Updated image source
