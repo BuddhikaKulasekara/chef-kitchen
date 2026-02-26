@@ -67,7 +67,6 @@ const Expert = () => {
           </p>
           <h2>Meet Our Culinary Experts.</h2>
         </div>
-        // --- IGNORE ---
         <Slider {...settings}>
           {loading
             ? Array.from({ length: 3 }).map((_, i) => (
