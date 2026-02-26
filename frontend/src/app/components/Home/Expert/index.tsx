@@ -65,7 +65,7 @@ const Expert = () => {
           <p className='text-primary text-lg font-normal mb-3 tracking-widest uppercase'>
             Our Chefs
           </p>
-          <h2>Meet Our Culinary Experts.</h2>
+          <h2>Meet Our Culinary Experts</h2>
         </div>
         <Slider {...settings}>
           {loading
