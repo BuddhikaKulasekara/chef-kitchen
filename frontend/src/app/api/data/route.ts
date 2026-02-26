@@ -14,7 +14,6 @@ const HeaderData: HeaderItem[] = [
   { label: 'Reserve Table', href: '/#reserve' },
 
 ]
-//feat: png to webp change
 const FeaturesData: FeaturesType[] = [ // nedd to change the image png to webp and update the image source in the public folder
   {
     imgSrc: '/images/Features/cozy.webp',// Updated image source
@@ -35,7 +34,7 @@ const FeaturesData: FeaturesType[] = [ // nedd to change the image png to webp a
       'We use the freshest local ingredients daily, ensuring every dish bursts with authentic taste and premium quality.',
   },
   {
-    imgSrc: '/images/Features/Buddhika (28).png', // Updated image source
+    imgSrc: '/images/Features/community.webp', // Updated image source
     heading: 'Community & Events',
     subheading:
       'At Hunger Land, every visit can be a celebration with friends, family, and fellow food lovers.',
