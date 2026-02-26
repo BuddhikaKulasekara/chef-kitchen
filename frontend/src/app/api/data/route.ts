@@ -23,7 +23,7 @@ const FeaturesData: FeaturesType[] = [ // nedd to change the image png to webp a
       'Relax in a warm, welcoming space designed for casual dinners, family gatherings, or special celebrations — a perfect place to enjoy every bite.',
   },
   {
-    imgSrc: '/images/Features/Buddhika (26).png',// Updated image source
+    imgSrc: '/images/Features/unique.webp',// Updated image source
     heading: 'Unique Culinary Creations',
     subheading:
       'Savor exclusive dishes crafted with love and creativity by our talented chefs, bringing flavors that delight your senses.',
