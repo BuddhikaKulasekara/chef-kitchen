@@ -6,4 +6,5 @@ export interface BreadcrumbProps {
 export interface BreadcrumbLink {
   href: string;
   text: string;
+  //.
 }
