@@ -59,7 +59,6 @@ const ExpertChiefData: ExpertChiefType[] = [
   },
 ]
 //not imagge
-//not found image in the public folder
 // The image sources in the GalleryImagesData have been updated to .webp format and should be placed in the public/images/Gallery directory for optimal performance.
 const GalleryImagesData: GalleryImagesType[] = [
   {
