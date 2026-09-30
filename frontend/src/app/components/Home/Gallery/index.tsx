@@ -1,180 +1,59 @@
-'use client'
 import Image from 'next/image'
-import Masonry from 'react-masonry-css'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import GalleryImagesSkeleton from '../../Skeleton/GalleryImages'
-import { Icon } from '@iconify/react'
 import { GalleryImagesType } from '@/app/types/galleryimage'
-import { FullMenuType } from '@/app/types/fullmenu'
+import MenuLauncher from './MenuLauncher'
 
-const Gallery = () => {
-  const [galleryImages, setGalleryImages] = useState<GalleryImagesType[]>([])
-  const [fullMenu, setFullMenu] = useState<FullMenuType[]>([])
-  const [loading, setLoading] = useState(true)
-  const [menuLoading, setMenuLoading] = useState(false)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+type GalleryProps = {
+  items?: GalleryImagesType[]
+}
 
-  // popup open
-  const openMenu = async () => {
-    setIsMenuOpen(true)
-    setMenuLoading(true)
-
-    try {
-      // 🔥 FETCH FROM DATABASE (BACKEND API)
-      const res = await fetch('http://localhost:5000/api/menu')
-      if (!res.ok) throw new Error('Failed to fetch full menu')
-
-      const data = await res.json()
-      setFullMenu(data)
-    } catch (error) {
-      console.error('Error loading full menu:', error)
-    } finally {
-      setMenuLoading(false)
-    }
-  }
-
-  const closeMenu = () => setIsMenuOpen(false)
-
-  // 🔹 ONLY gallery images from code
-  useEffect(() => {
-    const fetchGalleryFromApi = async () => {
-      try {
-        const res = await fetch('/api/data')
-        if (!res.ok) throw new Error('Failed to fetch data')
-
-        const data = await res.json()
-        setGalleryImages(data.GalleryImagesData)
-      } catch (error) {
-        console.error('Error fetching gallery data:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchGalleryFromApi()
-  }, [])
-
+export default function Gallery({ items = [] }: GalleryProps) {
   return (
-    <section id='menu' className='scroll-mt-20'>
+    <section id='menu' className='section scroll-mt-24 bg-cocoa text-cream'>
       <div className='container'>
-        <div className='text-center'>
-          <p className='text-primary text-lg font-normal mb-3 tracking-widest uppercase'>
-            Our Menu.
-          </p>
-          <h2>Explore Our Signature Dishes</h2>
+        <div className='flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between'>
+          <div>
+            <p className='label !text-honey mb-2'>Menu highlights</p>
+            <h2 className='text-3xl text-cream sm:text-4xl lg:text-5xl'>
+              Dishes you&apos;ll <span className='italic text-spice'>dream</span> about
+            </h2>
+          </div>
+          <MenuLauncher />
         </div>
 
-        {/* Gallery */}
-        <div className='my-16 px-6'>
-          <Masonry
-            breakpointCols={{ default: 2, '700': 2, '500': 1 }}
-            className='flex gap-6'
-            columnClassName='masonry-column'
-          >
-            {loading
-              ? Array.from({ length: 4 }).map((_, i) => (
-                <GalleryImagesSkeleton key={i} />
-              ))
-              : galleryImages.map((item, index) => (
-                <div
-                  key={index}
-                  className='overflow-hidden rounded-3xl mb-6 relative group'
-                >
-                  <Image
-                    src={item.src}
-                    alt={item.name}
-                    width={600}
-                    height={500}
-                    className='object-cover w-full h-full'
-                  />
-                  <div className='w-full h-full absolute bg-black/40 top-full group-hover:top-0 duration-500 lg:p-12 md:p-8 p-3.5 flex flex-col items-start lg:gap-8 gap-4 justify-end'>
-                    <p className='text-white lg:text-2xl text-xl'>
-                      {item.name}
-                    </p>
-                    <div className='flex items-center justify-between w-full'>
-                      <p className='text-white lg:text-2xl text-xl'>
-                        $ {item.price}
-                      </p>
-                      <Link
-                        href='#'
-                        className='text-white rounded-full bg-primary border duration-300 border-primary py-2 lg:px-6 md:px-4 px-3 hover:bg-primary/40 hover:backdrop-blur-xs md:text-base text-sm'
-                      >
-                        Learn More
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
-          </Masonry>
-        </div>
-
-        {/* View More */}
-        <div className='flex justify-center'>
-          <button
-            className='px-6 py-2 border border-primary rounded-full text-base font-medium text-white bg-primary hover:bg-primary/20 hover:text-primary transition duration-300'
-            onClick={openMenu}
-          >
-            View More
-          </button>
-
-          {/* POPUP */}
-          {isMenuOpen && (
-            <div
-              className='fixed top-0 left-0 w-full h-full bg-black/50 flex items-center justify-center z-50 px-4'
-              onClick={closeMenu}
+        <ul className='mt-12 grid gap-6 sm:grid-cols-2'>
+          {items.map((item, i) => (
+            <li
+              key={item.name}
+              className='group relative overflow-hidden rounded-3xl bg-cocoa-soft/50'
             >
-              <div
-                className='relative mx-auto w-full max-w-2xl max-h-2/3 rounded-3xl px-4 pt-14 pb-8 text-center bg-white overflow-hidden'
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={closeMenu}
-                  className='absolute top-0 right-0 mr-4 mt-8'
-                >
-                  <Icon
-                    icon='material-symbols:close-rounded'
-                    width={24}
-                    height={24}
-                    className='text-black hover:text-primary'
-                  />
-                </button>
-
-                <p className='text-black text-2xl font-semibold mb-4'>
-                  Full Menu
-                </p>
-
-                <div className='max-h-[350px] overflow-y-auto'>
-                  {menuLoading ? (
-                    <p className='py-10'>Loading menu.....</p>
-                  ) : (
-                    <table className='w-full table-auto border-collapse text-left'>
-                      <thead className='sticky top-0 bg-neutral-100'>
-                        <tr>
-                          <th className='py-3 px-4'>Dish</th>
-                          <th className='py-3 px-4'>Description</th>
-                          <th className='py-3 px-4'>Price</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {fullMenu.map((item, index) => (
-                          <tr key={index} className='border-t'>
-                            <td className='py-2 px-4'>{item.name}</td>
-                            <td className='py-2 px-4'>{item.description}</td>
-                            <td className='py-2 px-4'>{item.price}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  )}
-                </div>
+              <div className='relative aspect-[4/3] overflow-hidden'>
+                <Image
+                  src={item.src}
+                  alt={item.name}
+                  fill
+                  sizes='(max-width: 640px) 100vw, 50vw'
+                  className='object-cover transition duration-700 group-hover:scale-110'
+                />
+                <div className='absolute inset-0 bg-linear-to-t from-cocoa via-cocoa/20 to-transparent opacity-90' />
+                <span className='absolute left-4 top-4 rounded-full bg-spice px-3 py-1 text-xs font-bold text-white'>
+                  #{i + 1} favorite
+                </span>
               </div>
-            </div>
-          )}
-        </div>
+              <div className='absolute bottom-0 left-0 right-0 flex items-end justify-between gap-3 p-5'>
+                <div>
+                  <p className='font-display text-xl text-cream sm:text-2xl'>{item.name}</p>
+                  <p className='text-xs font-medium uppercase tracking-wider text-cream/60'>
+                    Chef&apos;s kitchen
+                  </p>
+                </div>
+                <p className='shrink-0 rounded-full bg-honey px-4 py-2 font-bold text-cocoa'>
+                  ${item.price}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )
 }
-
-export default Gallery
