@@ -1,155 +1,58 @@
-'use client'
-
-import React, { FC, useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Icon } from '@iconify/react'
 import Logo from '../Header/Logo'
 import { FooterLinkType } from '@/app/types/footerlink'
 
-const Footer: FC = () => {
-  const [footerlink, SetFooterlink] = useState<FooterLinkType[]>([])
+type FooterProps = {
+  sections: FooterLinkType[]
+}
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/data')
-        if (!res.ok) throw new Error('Failed to fetch')
-        const data = await res.json()
-        SetFooterlink(data.FooterLinkData)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-    fetchData()
-  }, [])
-
+export default function Footer({ sections }: FooterProps) {
   return (
-    <footer className='pt-8'>
-      <div className='container'>
-        <div className='grid grid-cols-1 sm:grid-cols-6 lg:gap-20 md:gap-24 sm:gap-12 gap-12 pb-10'>
-          <div className='col-span-2'>
-            <Logo />
-            <p className='text-sm font-medium text-grey my-5 max-w-70%'>
-              Open an account in minutes, get full financial control for much
-              longer.
-            </p>
-            <div className='flex gap-6 items-center'>
-              <Link
-                href='#'
-                className='group bg-white hover:bg-primary rounded-full shadow-xl p-3'>
-                <Icon
-                  icon='fa6-brands:facebook-f'
-                  width='16'
-                  height='16'
-                  className=' group-hover:text-white text-black'
-                />
-              </Link>
-              <Link
-                href='#'
-                className='group bg-white hover:bg-primary rounded-full shadow-xl p-3'>
-                <Icon
-                  icon='fa6-brands:instagram'
-                  width='16'
-                  height='16'
-                  className=' group-hover:text-white text-black'
-                />
-              </Link>
-              <Link
-                href='#'
-                className='group bg-white hover:bg-primary rounded-full shadow-xl p-3'>
-                <Icon
-                  icon='fa6-brands:x-twitter'
-                  width='16'
-                  height='16'
-                  className=' group-hover:text-white text-black'
-                />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-2'>
-            <div className='flex gap-20'>
-              {footerlink.map((product, i) => (
-                <div key={i} className='group relative col-span-2'>
-                  <p className='text-black text-xl font-semibold mb-9'>
-                    {product.section}
-                  </p>
-                  <ul>
-                    {product.links.map((item, i) => (
-                      <li key={i} className='mb-3'>
-                        <Link
-                          href={item.href}
-                          className='text-black/60 hover:text-black text-base font-normal mb-6'>
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className='col-span-2 sm:col-span-6 md:col-span-2'>
-            <div className='flex flex-col gap-5'>
-              <div className='flex'>
-                <Icon
-                  icon='solar:point-on-map-perspective-bold'
-                  className='text-primary text-3xl lg:text-2xl inline-block me-2'
-                />
-                <p className='text-black text-base'>
-                  69/1, Ds Senanayake Road, Kandy, Sri Lanka
-                </p>
-              </div>
-              <Link href='tel:+94761627842'> {/*contact number link*/}
-                <div className='flex'>
-                  <Icon
-                    icon='solar:phone-bold'
-                    className='text-primary text-3xl lg:text-2xl inline-block me-2'
-                  />
-                  <p className='text-black/60 hover:text-black text-base'>
-                    +94 76 162 7842
-                  </p>
-                </div>
-              </Link>
-              <Link href='/'>
-                <div className='flex'>
-                  <Icon
-                    icon='solar:mailbox-bold'
-                    className='text-primary text-3xl lg:text-2xl inline-block me-2'
-                  />
-                  <p className='text-black/60 hover:text-black text-base'>
-                    info@gmail.com
-                  </p>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className='border-t border-grey/15 py-5 flex flex-col sm:flex-row justify-between sm:items-center gap-5'>
-          <p className='text-sm text-black/70'>
-            @2026 - Buddhika Kulasekara. All Rights Reserved by{' '}
-            <Link
-              href='/'
-              className='hover:text-primary hover:underline'>
-
-            </Link>
+    <footer className='bg-cocoa text-cream section !py-14'>
+      <div className='container grid gap-12 md:grid-cols-12'>
+        <div className='md:col-span-5'>
+          <Logo light />
+          <p className='mt-4 max-w-sm text-sm leading-relaxed text-cream/65'>
+            Where every plate tells a story and every guest leaves with a full heart
+            (and a happy stomach). See you at the table.
           </p>
+        </div>
 
-          <div className=''>
-            <Link
-              href='/privacy-policy'
-              className='text-sm text-black/70 px-5 border-r border-grey/15 hover:text-primary hover:underline'>
-              Privacy policy
-            </Link>
-            <Link
-              href='/terms-conditions'
-              className='text-sm text-black/70 px-5 hover:text-primary hover:underline'>
-              Terms & conditions
-            </Link>
-          </div>
+        <div className='flex flex-wrap gap-12 md:col-span-4'>
+          {sections.map((block) => (
+            <div key={block.section}>
+              <p className='text-xs font-bold uppercase tracking-[0.2em] text-honey mb-4'>
+                {block.section}
+              </p>
+              <ul className='space-y-2.5'>
+                {block.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className='text-sm text-cream/70 transition hover:text-cream'
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className='md:col-span-3 text-sm text-cream/70 space-y-2'>
+          <p>69/1 D.S. Senanayake Road, Kandy</p>
+          <a href='tel:+94761627842' className='block hover:text-cream'>
+            +94 76 162 7842
+          </a>
+          <a href='mailto:info@chefkitchen.com' className='block hover:text-cream'>
+            info@chefkitchen.com
+          </a>
         </div>
       </div>
+      <p className='container mt-12 border-t border-cream/10 pt-8 text-center text-xs text-cream/50'>
+        © {new Date().getFullYear()} Chef Kitchen · Made with love in Kandy
+      </p>
     </footer>
   )
 }
-
-export default Footer
