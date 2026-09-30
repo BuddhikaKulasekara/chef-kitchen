@@ -1,5 +1,5 @@
 export type GalleryImagesType = {
-  id: number
+  id?: number
   name: string
   price: number
   src: string
