@@ -1,163 +1,76 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import Logo from './Logo'
-import HeaderLink from './Navigation/HeaderLink'
-import MobileHeaderLink from './Navigation/MobileHeaderLink'
-import Signin from '@/app/components/Auth/SignIn'
-import SignUp from '@/app/components/Auth/SignUp'
-import { Icon } from '@iconify/react/dist/iconify.js'
 import { HeaderItem } from '@/app/types/menu'
 
-const Header: React.FC = () => {
-  const [headerLink, setHeaderLink] = useState<HeaderItem[]>([])
+const NAV_FILTER = ['Home', 'About', 'Menu', 'Reserve']
 
-  const [navbarOpen, setNavbarOpen] = useState(false)
-  const [sticky, setSticky] = useState(false)
-  const [isSignInOpen, setIsSignInOpen] = useState(false)
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false)
+type HeaderProps = {
+  links: HeaderItem[]
+}
 
-  const navbarRef = useRef<HTMLDivElement>(null)
-  const signInRef = useRef<HTMLDivElement>(null)
-  const signUpRef = useRef<HTMLDivElement>(null)
-  const mobileMenuRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/data')
-        if (!res.ok) throw new Error('Failed to fetch')
-        const data = await res.json()
-        setHeaderLink(data.HeaderData)
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-    fetchData()
-  }, [])
-
-  const handleScroll = () => {
-    setSticky(window.scrollY >= 20)
-  }
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      signInRef.current &&
-      !signInRef.current.contains(event.target as Node)
-    ) {
-      setIsSignInOpen(false)
-    }
-    if (
-      signUpRef.current &&
-      !signUpRef.current.contains(event.target as Node)
-    ) {
-      setIsSignUpOpen(false)
-    }
-    if (
-      mobileMenuRef.current &&
-      !mobileMenuRef.current.contains(event.target as Node) &&
-      navbarOpen
-    ) {
-      setNavbarOpen(false)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [navbarOpen, isSignInOpen, isSignUpOpen])
-
-  useEffect(() => {
-    if (isSignInOpen || isSignUpOpen || navbarOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-  }, [isSignInOpen, isSignUpOpen, navbarOpen])
+export default function Header({ links }: HeaderProps) {
+  const [open, setOpen] = useState(false)
+  const nav = links.filter((l) => NAV_FILTER.includes(l.label))
 
   return (
-    <header
-      className={`fixed top-0 z-40 py-4 w-full transition-all duration-300 ${sticky ? 'shadow-lg bg-white' : 'shadow-none'
-        }`}>
-      <div>
-        <div className='container flex items-center justify-between'>
-          <div>
-            <Logo />
-          </div>
-          <nav className='hidden lg:flex grow items-center gap-4 xl:gap-6  justify-center'>
-            {headerLink.map((item, index) => (
-              <HeaderLink key={index} item={item} />
-            ))}
-          </nav>
-          <div className='flex items-center gap-2 lg:gap-3'>
+    <header className='sticky top-0 z-50 border-b border-line/80 bg-cream/90 backdrop-blur-md'>
+      <div className='container flex h-[4.25rem] items-center justify-between gap-4'>
+        <Logo />
+
+        <nav className='hidden items-center gap-9 md:flex' aria-label='Main'>
+          {nav.map((item) => (
             <Link
-              href='#'
-              className='text-lg font-medium hover:text-primary hidden xl:block'>
-              <Icon
-                icon='solar:phone-bold'
-                className='text-primary text-3xl lg:text-2xl inline-block me-2'
-              />
-              +94 76 162 7842
+              key={item.href}
+              href={item.href}
+              className='text-sm font-semibold text-cocoa-soft transition hover:text-spice'
+            >
+              {item.label}
             </Link>
+          ))}
+        </nav>
 
-            <button
-              onClick={() => setNavbarOpen(!navbarOpen)}
-              className='block lg:hidden p-2 rounded-lg'
-              aria-label='Toggle mobile menu'>
-              <span className='block w-6 h-0.5 bg-black'></span>
-              <span className='block w-6 h-0.5 bg-black mt-1.5'></span>
-              <span className='block w-6 h-0.5 bg-black mt-1.5'></span>
-            </button>
-          </div>
-        </div>
-        {navbarOpen && (
-          <div className='fixed top-0 left-0 w-full h-full bg-black/50 z-40' />
-        )}
-        <div
-          ref={mobileMenuRef}
-          className={`lg:hidden fixed top-0 right-0 h-full w-full bg-white shadow-lg transform transition-transform duration-300 max-w-xs ${navbarOpen ? 'translate-x-0' : 'translate-x-full'
-            } z-50`}>
-          <div className='flex items-center justify-between gap-2 p-4'>
-            <div>
-              <Logo />
-            </div>
-            {/*  */}
-            <button
-              onClick={() => setNavbarOpen(false)}
-              className="hover:cursor-pointer"
-              aria-label='Close menu Modal'>
-              <Icon
-                icon='material-symbols:close-rounded'
-                width={24}
-                height={24}
-                className='text-black hover:text-primary text-24 inline-block me-2'
-              />
-            </button>
-          </div>
-          <Link
-            href='#'
-            className='text-lg font-medium hover:text-primary block md:hidden mt-6 p-4'>
-            <Icon
-              icon='solar:phone-bold'
-              className='text-primary text-3xl lg:text-2xl inline-block me-2'
-            />
+        <div className='flex items-center gap-3'>
+          <a
+            href='tel:+94761627842'
+            className='hidden text-sm font-semibold text-muted lg:inline'
+          >
             +94 76 162 7842
+          </a>
+          <Link href='/#reserve' className='btn !py-2.5 !px-5 text-xs sm:text-sm'>
+            Book a table
           </Link>
-          <nav className='flex flex-col items-start p-4'>
-            {headerLink.map((item, index) => (
-              <MobileHeaderLink key={index} item={item} />
-            ))}
-
-          </nav>
+          <button
+            type='button'
+            className='rounded-full border-2 border-line bg-surface px-3 py-2 text-xs font-bold text-cocoa md:hidden'
+            aria-expanded={open}
+            aria-label='Open menu'
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? 'Close' : 'Menu'}
+          </button>
         </div>
       </div>
+
+      {open && (
+        <nav
+          className='border-t border-line bg-cream px-4 py-4 md:hidden'
+          aria-label='Mobile'
+        >
+          {nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className='block py-2.5 text-base font-semibold text-cocoa'
+              onClick={() => setOpen(false)}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      )}
     </header>
   )
 }
-
-export default Header
