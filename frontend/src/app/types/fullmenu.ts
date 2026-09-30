@@ -1,6 +1,6 @@
 export type FullMenuType = {
-  id: number
+  id?: number
   name: string
   description: string
-  price: number
+  price: number | string
 }
