@@ -1,56 +1,87 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:is(.dark *));
-
 @theme {
-  --color-primary: #df6853;
-  --color-grey: #363636;
+  --color-spice: #e85a3c;
+  --color-spice-dark: #c9452a;
+  --color-honey: #f5a623;
+  --color-cream: #fff8f3;
+  --color-cream-deep: #fceee3;
+  --color-cocoa: #2c211c;
+  --color-cocoa-soft: #4a3f38;
+  --color-ink: #2c211c;
+  --color-muted: #7a6f66;
+  --color-line: #ecd9cc;
+  --color-surface: #ffffff;
 
-  --spacing-60\%: 60%;
-  --spacing-70\%: 70%;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-jakarta), system-ui, sans-serif;
 
-  --tracking-widest: 0.515em;
-
-  --radius-Newsletter: 30px 400px 30px 30px;
+  --shadow-food: 0 24px 48px -12px rgb(232 90 60 / 0.18);
+  --shadow-card: 0 12px 32px -8px rgb(44 33 28 / 0.12);
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+  ::before {
+    border-color: var(--color-line);
   }
 
-  section {
-    @apply py-10;
+  body {
+    @apply bg-cream text-ink antialiased;
+    font-family: var(--font-sans);
   }
 
-  h1 {
-    @apply text-black md:text-7xl sm:text-6xl text-5xl
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    @apply font-semibold tracking-tight text-cocoa;
   }
-
-  h2 {
-    @apply text-black font-semibold sm:text-5xl text-4xl sm:leading-14 leading-11
-  }
-  
 }
 
 @layer utilities {
   .container {
-    @apply max-w-7xl mx-auto w-full px-4;
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .label {
+    @apply text-xs font-bold uppercase tracking-[0.25em] text-spice;
+  }
+
+  .food-glow {
+    background: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      rgb(245 166 35 / 0.15),
+      transparent 70%
+    );
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-spice px-6 py-3 text-sm font-bold text-white shadow-md transition hover:bg-spice-dark hover:shadow-food;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-cocoa/15 bg-surface px-6 py-3 text-sm font-bold text-cocoa transition hover:border-spice hover:text-spice;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .card-food {
+    @apply overflow-hidden rounded-3xl bg-surface shadow-card transition duration-500 hover:-translate-y-1 hover:shadow-food;
   }
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgb(232 90 60 / 0.25);
 }
