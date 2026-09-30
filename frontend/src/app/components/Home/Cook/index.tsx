@@ -1,53 +1,51 @@
-'use client'
-
 import Image from 'next/image'
+import Link from 'next/link'
 
-const Cook = () => {
+export default function Cook() {
   return (
-    <section className='relative' id='aboutus'>
-      <div className='container px-4'>
-        <div className='absolute right-0 bottom-[-18%] xl:block hidden'>
-          <Image
-            src='/images/Cook/burger.webp'
-            alt='burger-image'
-            width={463}
-            height={622}
-          />
-        </div>
-        <div className='grid grid-cols-1 lg:grid-cols-12 my-16 space-x-5'>
-          <div className='lg:col-span-6 flex lg:justify-start justify-center'>
+    <section id='aboutus' className='section scroll-mt-24 overflow-hidden'>
+      <div className='container'>
+        <div className='grid items-center gap-12 lg:grid-cols-2'>
+          <div className='relative order-2 lg:order-1'>
+            <div className='relative aspect-[5/6] overflow-hidden rounded-[2rem] shadow-food'>
+              <Image
+                src='/images/Cook/cook.webp'
+                alt='Chef cooking with passion'
+                fill
+                sizes='(max-width: 1024px) 100vw, 50vw'
+                className='object-cover'
+              />
+            </div>
             <Image
-              src='/images/Cook/cook.webp'
-              alt='nothing'
-              width={636}
-              height={808}
+              src='/images/Cook/burger.webp'
+              alt=''
+              width={140}
+              height={180}
+              className='absolute -bottom-6 -right-4 hidden rounded-2xl border-4 border-cream shadow-food rotate-3 sm:block'
+              aria-hidden
             />
-          </div>{/*about section */}
-          <div className='lg:col-span-6 flex flex-col justify-center items-center lg:items-start'>
-            <p className='text-primary text-lg font-normal mb-3 tracking-widest uppercase lg:text-start text-center'>
-              About Hunger Land!
-            </p>
-            <h2 className='lg:text-start text-center'>
-              Dining experience that excites the senses
+          </div>
+
+          <div className='order-1 lg:order-2'>
+            <p className='label mb-2'>Our story</p>
+            <h2 className='text-3xl sm:text-4xl lg:text-5xl leading-tight'>
+              Cooked slow. Served with{' '}
+              <span className='italic text-spice'>heart.</span>
             </h2>
-            <p className='text-black/50 text-lg font-normal my-5 text-start'>
-              At Hunger Land, every dish tells a story. Our chefs combine culinary tradition
-              with modern innovation to create a dining experience that excites the senses.
-              Using only the freshest, locally sourced ingredients and presenting each plate
-              with care, we ensure every meal is a moment to remember..
+            <p className='mt-5 text-muted leading-relaxed'>
+              We believe great food starts with respect—for farmers, for fire, and for
+              the people around your table. Every plate at Chef Kitchen is a little
+              love letter from our open kitchen in Kandy.
             </p>
-            <p className='text-black/50 text-lg font-normal mb-10 text-start'>
-              Whether you’re celebrating a special occasion or simply enjoying a casual evening,
-              Hunger Land offers a welcoming ambiance, flavorful creations, and something truly special for every guest.
+            <p className='mt-4 text-muted leading-relaxed'>
+              Come hungry. Leave happy. That&apos;s the only rule.
             </p>
-            {/*<button className='text-xl font-medium rounded-full text-white py-3 px-8 duration-300 bg-primary w-fit border border-primary hover:bg-transparent hover:text-primary hover:cursor-pointer'>
-              Learn more
-            </button>*/}
+            <Link href='/#menu' className='btn mt-8'>
+              Taste the menu
+            </Link>
           </div>
         </div>
       </div>
     </section>
   )
 }
-
-export default Cook
